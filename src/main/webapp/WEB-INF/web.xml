@@ -24,9 +24,20 @@
 	  	<init-param>
 	    	<param-name>com.sun.jersey.config.property.packages</param-name>
 	    	<param-value>com.sample.hello.resources</param-value>
+	    	<!-- 
+	    	<param-value>com.sample.hello.resources;com.sample.hello2.resources</param-value>
+	    	 -->
 	  	</init-param>
+	  	<!--  以应用类的型式，来初始化资源
+		<init-param>
+			<param-name>javax.ws.rs.Application</param-name>
+			 <param-value>org.foo.rest.MyApplication</param-value>
+		</init-param>
+	  	 -->
 	  	<load-on-startup>1</load-on-startup>
 	</servlet>
+	
+	
 	
 	<servlet-mapping>
 	  	<servlet-name>Jersey REST Service</servlet-name>
