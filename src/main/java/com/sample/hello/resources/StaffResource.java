@@ -24,53 +24,67 @@ import com.sun.jersey.api.NotFoundException;
 
 @Path("/staff")
 public class StaffResource {
-    @Context
-    UriInfo uriInfo;
-    @Context
-    Request request;
-    
-    @POST
-    @Produces(MediaType.TEXT_HTML)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void createStaff(@FormParam("name") String name,
-            @FormParam("age") String age,
-            @FormParam("career") String career,
-            @Context HttpServletResponse servletResponse) throws IOException {
-        Staff staff = new Staff(name, Integer.valueOf(age), career);
-        StaffStore.getStore().put(name,staff);
+	@Context
+	UriInfo uriInfo;
+	@Context
+	Request request;
 
-        URI uri = uriInfo.getAbsolutePathBuilder().path(name).build();
-        Response.created(uri).build();
+	@POST
+	@Produces(MediaType.TEXT_HTML)
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+	public void createStaff(@FormParam("name") String name,
+			@FormParam("age") String age, @FormParam("career") String career,
+			@Context HttpServletResponse servletResponse) throws IOException {
+		Staff staff = new Staff(name, Integer.valueOf(age), career);
+		StaffStore.getStore().put(name, staff);
 
-        servletResponse.sendRedirect("../pages/new_contact.html");
-    }
-    
-    @GET
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    public List<Staff> getStaffs() {
-        List<Staff> staff = new ArrayList<Staff>();
-        staff.addAll(StaffStore.getStore().values());
-        return staff;
-    }
-    
-    @Path("{staff}")
-    @GET
-    @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-    public Staff getStaff(@PathParam("staff") String staff) {
-           Staff staffEbo = StaffStore.getStore().get(staff);
-           if(staffEbo == null) {
-               throw new NotFoundException("Can't find " + staff + " staff !");
-           }
-           return staffEbo;
-    }
-    
-    //@Path("{staff}")
-    @DELETE
-    public void deleteStaff(@FormParam("name") String staffName) {
-        Staff staff = StaffStore.getStore().get(staffName);
-        if(staff == null) {
-            throw new NotFoundException("Can't find " + staff + " staff !");
-        }
-        StaffStore.getStore().remove(staffName);
-    }
+		URI uri = uriInfo.getAbsolutePathBuilder().path(name).build();
+		Response.created(uri).build();
+
+		servletResponse.sendRedirect(uri.toString());
+		// servletResponse.sendRedirect("../pages/staff/create-staff.jsp");
+		// servletResponse.sendRedirect("../pages/utils/success.jsp");
+	}
+
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public List<Staff> getStaffs() {
+		List<Staff> staff = new ArrayList<Staff>();
+		staff.addAll(StaffStore.getStore().values());
+		return staff;
+	}
+
+	@Path("{staff}")
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+	public Staff getStaff(@PathParam("staff") String staff) {
+		Staff staffEbo = StaffStore.getStore().get(staff);
+		if (staffEbo == null) {
+			throw new NotFoundException("Can't find " + staff + " staff !");
+		}
+		return staffEbo;
+	}
+
+	@Path("delete")
+	@POST
+	public void deleteStaff(@FormParam("name") String name,
+			@Context HttpServletResponse servletResponse) throws IOException {
+		Staff staff = StaffStore.getStore().get(name);
+		if (staff == null) {
+			throw new NotFoundException("Can't find " + staff + " staff !");
+		}
+		StaffStore.getStore().remove(name);
+		servletResponse.sendRedirect("../pages/utils/success.jsp");
+	}
+
+	@DELETE
+	public void deleteStaff2(@FormParam("name") String name,
+			@Context HttpServletResponse servletResponse) throws IOException {
+		Staff staff = StaffStore.getStore().get(name);
+		if (staff == null) {
+			throw new NotFoundException("Can't find " + staff + " staff !");
+		}
+		StaffStore.getStore().remove(name);
+		servletResponse.sendRedirect("../pages/utils/success.jsp");
+	}
 }

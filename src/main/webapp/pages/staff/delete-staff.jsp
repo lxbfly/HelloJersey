@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Delete Staff</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <style type="text/css">
 	#delete-staff {
 		width: 600px;
@@ -13,16 +14,38 @@
 		padding: 0 10% 1% 10%;
 	}
 </style>
+<script type="text/javascript">
+
+function deleteStaff() {
+	var staffName = $("#staffName").val();
+	alert(staffName);
+	$.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/HelloJersey/rest/staff/delete",
+        data: { "name": staffName },
+        dataType: "html",
+        success: function (mes) {
+			alert("success");
+        }
+    });
+}
+</script>
 </head>
 <body>
 	<div id="delete-staff">
-		<form action="../../rest/staff" method="DELETE">
+	<!-- 
+		<form action="../../rest/staff/delete" method="post">
+	 -->
+		<form id="deleteform">
+			<!-- 
+			<input name="_method" type="hidden" value="delete" />
+			 -->
 			<h2> Delete Staff </h2>
 			<hr>
 			<label for="name"><b>Staff Name : </b></label>
-			<input name="name" type="text" width="50px;"/>
+			<input id="staffName" name="name" type="text" width="50px;"/>
 			<br />
-			<input type="submit" value="Submit"/>
+			<input type="button" value="Submit" onclick="deleteStaff()"/>
 			<input type="reset" value=" Reset "/>
 		</form>
 	</div>

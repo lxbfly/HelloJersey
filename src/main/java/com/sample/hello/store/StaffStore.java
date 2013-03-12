@@ -8,7 +8,6 @@ package com.sample.hello.store;
 
 import java.util.HashMap;
 import java.util.Map;
-import com.sample.hello.bean.Contact;
 import com.sample.hello.bean.Staff;
 public class StaffStore {
     private static Map<String, Staff> store;
@@ -19,7 +18,7 @@ public class StaffStore {
         initStaff();
     }
 
-    private void initStaff() {
+    private static void initStaff() {
         Staff staff = new Staff("hjt",78,"国家主席");
         store.put(staff.getName(), staff);
     }
