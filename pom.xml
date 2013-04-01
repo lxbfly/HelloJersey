@@ -37,6 +37,11 @@
 	    <version>1.17</version>
 	</dependency>
 	<dependency>
+	    <groupId>com.sun.jersey.contribs</groupId>
+	    <artifactId>jersey-multipart</artifactId>
+	    <version>1.17</version>
+	</dependency>	
+	<dependency>
 	    <groupId>javax.ws.rs</groupId>
 	    <artifactId>jsr311-api</artifactId>
 	    <version>1.1.1</version>
@@ -51,7 +56,13 @@
 		<groupId>log4j</groupId>
 		<artifactId>log4j</artifactId>
 		<version>1.2.17</version>
-	</dependency>	
+	</dependency>
+
+	<dependency>
+	    <groupId>org.apache.directory.studio</groupId>
+	    <artifactId>org.apache.commons.io</artifactId>
+	    <version>2.4</version>
+	</dependency>
 	
 	<!-- Grizzly Dependency End -->
 	<!-- 
@@ -98,6 +109,7 @@
 			                             layout="legacy" />
 			</artifact:dependencies>
 	 -->
+	 <!-- 
 	<dependency>
 	    <groupId>com.sun.jersey</groupId>
 	    <artifactId>jersey-grizzly2</artifactId>
@@ -108,10 +120,8 @@
         <artifactId>jersey-test-framework-grizzly2</artifactId>
         <version>1.17</version>
         <scope>test</scope>
-        <!-- 
-        <classifier>cobertura</classifier>
-         -->
     </dependency>
+	  -->
 	<!-- Grizzly Dependency End -->
 	 
   </dependencies>

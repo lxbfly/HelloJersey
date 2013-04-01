@@ -4,9 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.sun.jersey.test.framework.JerseyTest;
-
-public class HelloTest extends JerseyTest {
+public class HelloTest {
 
 	// @Test
 	// public void test() {
