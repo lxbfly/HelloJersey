@@ -108,8 +108,7 @@
 			                             url="http://download.java.net/maven/1"
 			                             layout="legacy" />
 			</artifact:dependencies>
-	 -->
-	 <!-- 
+	 --> 
 	<dependency>
 	    <groupId>com.sun.jersey</groupId>
 	    <artifactId>jersey-grizzly2</artifactId>
@@ -121,7 +120,6 @@
         <version>1.17</version>
         <scope>test</scope>
     </dependency>
-	  -->
 	<!-- Grizzly Dependency End -->
 	 
   </dependencies>
