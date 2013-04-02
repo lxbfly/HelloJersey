@@ -3,3 +3,8 @@
 项目的实例是在以下网站找到的
 使用 Jersey 和 Apache Tomcat 构建 RESTful Web 服务
 http://www.ibm.com/developerworks/cn/web/wa-aj-tomcat/#resources
+
+the project run item as below:
+	one: when run glassfish.grizzly server ,  pass SampleServer Class test.
+	two: when run tomcat server , need pass eclipse tools menu : project -> clean [clean this project] , Can run
+	three: used maven tools complier project.  maven clean ; maven install , Notes maven compile project can not run under tomcat server.
