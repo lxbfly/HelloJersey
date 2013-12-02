@@ -85,6 +85,7 @@ public class IoResource {
 			System.out.println("RealPath : "
 					+ httpRequest.getSession().getServletContext()
 							.getRealPath(""));
+            return Response.ok().build();
 		} catch (Exception e) {
 			log.debug("upload faild !", e);
 		}
